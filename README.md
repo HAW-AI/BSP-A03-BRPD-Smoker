@@ -1,3 +1,2 @@
-
-# Simulation von Mensakassen (Synchronisation über Mensakassen)
-Es soll ein Programm zur Simulation von mehreren Mensakassen entwickelt werden. Wenn ein Student bezahlen möchte, geht er zu Kasse, an der die wenigsten Studenten warten (falls es Warteschlangen gibt). Wenn er an der Reihe ist, bezahlt er. Während der Bezahlphase ist die Kasse für ihn in exklusivem Zugriff, d.h. für andere Studenten gesperrt. Nachdem er bezahlt hat, isst er (Dauer: Zufallszeit) und kommt irgendwann wieder (ebenfalls nach einer Zufallszeit)
+#Smoker-Problem (Synchronisation über Objektmonitor)
+Ein Problem aus einer langsam aussterbenden Welt: Wir betrachten ein System mit drei Rauchern („smoker“) und einem Agenten. Jeder Raucher rollt sich so oft wie möglich eine Zigarette und raucht diese anschliessend. Um eine Zigarette rollen und rauchen zu können benötigt ein Raucher drei Zutaten: Tabak, Papier und Streichhölzer. Einer der drei Raucher hat Tabak, ein anderer Papier und der Dritte hat Streichhölzer. Der Agent hat eine unterschiedliche Menge von allen drei Dingen. Alle sitzen um einen Tisch versammelt.
