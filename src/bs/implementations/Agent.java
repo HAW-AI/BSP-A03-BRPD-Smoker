@@ -9,6 +9,7 @@ public class Agent extends Thread {
 	private int matches;
 	private int paper;
 	private int tobacco;
+	
 	private Agent(Table table, int tobacco, int paper, int matches) {
 		this.table = table;
 		this.tobacco = tobacco;
@@ -26,24 +27,36 @@ public class Agent extends Thread {
 	
 	public void placeTobaccoOnTable() {
 		System.out.println("Agent: Trying to place some Tobacco on the table");
-		tobacco -= AMOUNT_TO_BE_PLACED;
-		table.placeTobacco(AMOUNT_TO_BE_PLACED);
+		if ((tobacco - AMOUNT_TO_BE_PLACED) >= 0) {
+			tobacco -= AMOUNT_TO_BE_PLACED;
+			table.placeTobacco(AMOUNT_TO_BE_PLACED);
+		} else {
+			throw new RuntimeException("Agent: I ran out of tobacco.");
+		}
 		System.out.println("Agent: Placed some Tobacco on the table");
 	}
 
 	
 	public void placePaperOnTable() {
 		System.out.println("Agent: Trying to place some Paper on the table");
-		paper -= AMOUNT_TO_BE_PLACED;
-		table.placePaper(AMOUNT_TO_BE_PLACED);
+		if ((paper - AMOUNT_TO_BE_PLACED) >= 0) {
+			paper -= AMOUNT_TO_BE_PLACED;
+			table.placePaper(AMOUNT_TO_BE_PLACED);
+		} else {
+			throw new RuntimeException("Agent: I ran out of paper.");
+		}
 		System.out.println("Agent: Placed some Paper on the table");
 	}
 
 	
 	public void placeMatchesOnTable() {
 		System.out.println("Agent: Trying to place some Matches on the table");
-		matches -= AMOUNT_TO_BE_PLACED;
-		table.placeMatches(AMOUNT_TO_BE_PLACED);
+		if ((matches - AMOUNT_TO_BE_PLACED) >= 0) {
+			matches -= AMOUNT_TO_BE_PLACED;
+			table.placeMatches(AMOUNT_TO_BE_PLACED);
+		} else {
+			throw new RuntimeException("Agent: I ran out of matches.");
+		}
 		System.out.println("Agent: Placed some Matches on the table");
 	}
 	
@@ -62,7 +75,7 @@ public class Agent extends Thread {
 		min = 0;
 		max = 2;
 		int randomNum = rand.nextInt(max - min + 1) + min;
-		while (true) {
+		while (hasIngredients()) {
 			switch (randomNum) {
 			case 0:
 				try {
@@ -92,6 +105,7 @@ public class Agent extends Thread {
 				break;
 			}
 			randomNum = rand.nextInt(max - min + 1) + min;
+			System.out.println("I have " + matches + "Matches left, " + paper + "Paper and " + tobacco + "Tobbaco.");
 		}
 	}
 

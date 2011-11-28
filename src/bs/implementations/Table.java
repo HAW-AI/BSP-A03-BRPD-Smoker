@@ -62,34 +62,40 @@ public class Table {
 
 	
 	public synchronized void placePaper(int amount) throws RuntimeException {
-		try {
-			wait();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		System.out.println("Table: The Agent is trying to place " + amount + " Paper(s) on the table.");
+//		try {
+//			wait();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		paper += amount;
+		System.out.println("Table: The Agent is placed " + amount + " Paper(s) on the table.");
 		notify();
 	}
 
 	
 	public synchronized void placeTobacco(int amount) throws RuntimeException {
-		try {
-			wait();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		System.out.println("Table: The Agent is trying to place " + amount + " Tobacco on the table.");
+//		try {
+//			wait();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		tobacco += amount;
+		System.out.println("Table: The Agent placed " + amount + " Tobacco on the table.");
 		notify();
 	}
 
 	
 	public synchronized void placeMatches(int amount) throws RuntimeException {
-		try {
-			wait();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		System.out.println("Table: The Agent is trying to place " + amount + " Match(es) on the table.");
+//		try {
+//			wait();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		matches += amount;
+		System.out.println("Table: The Agent placed " + amount + " Match(es) on the table.");
 		notify();
 	}
 	
