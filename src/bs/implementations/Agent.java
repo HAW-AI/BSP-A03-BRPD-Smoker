@@ -25,6 +25,7 @@ public class Agent extends Thread {
 	
 	
 	public void placeTobaccoOnTable() {
+		System.out.println("Agent: Trying to place some Tobacco on the table");
 		tobacco -= AMOUNT_TO_BE_PLACED;
 		table.placeTobacco(AMOUNT_TO_BE_PLACED);
 		System.out.println("Agent: Placed some Tobacco on the table");
@@ -32,6 +33,7 @@ public class Agent extends Thread {
 
 	
 	public void placePaperOnTable() {
+		System.out.println("Agent: Trying to place some Paper on the table");
 		paper -= AMOUNT_TO_BE_PLACED;
 		table.placePaper(AMOUNT_TO_BE_PLACED);
 		System.out.println("Agent: Placed some Paper on the table");
@@ -39,6 +41,7 @@ public class Agent extends Thread {
 
 	
 	public void placeMatchesOnTable() {
+		System.out.println("Agent: Trying to place some Matches on the table");
 		matches -= AMOUNT_TO_BE_PLACED;
 		table.placeMatches(AMOUNT_TO_BE_PLACED);
 		System.out.println("Agent: Placed some Matches on the table");
@@ -65,27 +68,24 @@ public class Agent extends Thread {
 				try {
 					placeTobaccoOnTable();
 					placePaperOnTable();
-					notifyAll();
 				} catch (Exception e) {
-					// TODO: handle exception
+					e.printStackTrace();
 				}
 				break;
 			case 1:
 				try {
 					placeMatchesOnTable();
 					placePaperOnTable();
-					notifyAll();
 				} catch (Exception e) {
-					// TODO: handle exception
+					e.printStackTrace();				
 				}
 				break;
 			case 2:
 				try {
 					placeTobaccoOnTable();
 					placeMatchesOnTable();
-					notifyAll();
 				} catch (Exception e) {
-					// TODO: handle exception
+					e.printStackTrace();				
 				}
 				break;
 			default:
