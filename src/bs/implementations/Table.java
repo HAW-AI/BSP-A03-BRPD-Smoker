@@ -35,7 +35,7 @@ public class Table {
 		try {
 			wait();
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		paper -= 1;
 	}
@@ -45,7 +45,7 @@ public class Table {
 		try {
 			wait();
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		tobacco -= 1;
 	}
@@ -55,7 +55,7 @@ public class Table {
 		try {
 			wait();
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		matches -= 1;
 	}
@@ -65,7 +65,7 @@ public class Table {
 		try {
 			wait();
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		paper += amount;
 		notify();
@@ -76,7 +76,7 @@ public class Table {
 		try {
 			wait();
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		tobacco += amount;
 		notify();
@@ -87,7 +87,7 @@ public class Table {
 		try {
 			wait();
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		matches += amount;
 		notify();

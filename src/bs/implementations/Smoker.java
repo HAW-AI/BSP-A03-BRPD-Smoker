@@ -1,8 +1,8 @@
 package bs.implementations;
 
 public class Smoker extends Thread {
-	public static int SMOKING_BREAK_DURATION = 4000;
-	public static int CIGARETTE_ROLLING_DURATION = 2000;
+	public static int SMOKING_BREAK_DURATION = 500;
+	public static int CIGARETTE_ROLLING_DURATION = 500;
 	
 	private Table table;
 	private int paper;
@@ -22,40 +22,29 @@ public class Smoker extends Thread {
 		
 		return new Smoker(table, initialPaper, initialTobacco, initialMatches);
 	}
-	
-	private void wait(int milliseconds) {
-		try {
-			sleep(milliseconds);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-
-	
+		
 	public void run() {
 		while (true) {
 			if (!hasAllIngedients()) {
+				System.out.println("Dont have all the ingredients I need");
 				try {
 					getMissingIngredients();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			} else {
+				System.out.println("Got all the ingredients I need");
 				try {
 					rollCigarette();
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				try {
 					smoke();
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				wait(500);
 			}
-			wait(500);
 		}
 	}
 
@@ -104,16 +93,28 @@ public class Smoker extends Thread {
 
 	public void getMissingIngredients() {
 		if (tobacco == 0) {
-			table.getTobacco();
-			incrementTobacco();
+			try {
+				table.getTobacco();
+				incrementTobacco();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		if (paper == 0) {
-			table.getPaper();
-			incrementPaper();
+			try {
+				table.getPaper();
+				incrementPaper();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		if (matches == 0) {
-			table.getMatches();
-			incrementMatches();
+			try {
+				table.getMatches();
+				incrementMatches();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }
