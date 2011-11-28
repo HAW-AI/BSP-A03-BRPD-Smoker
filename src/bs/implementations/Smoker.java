@@ -114,7 +114,7 @@ public class Smoker extends Thread {
 				e.printStackTrace();
 			}
 		} else {
-			
+			System.out.println("Smoker: Didnt get anything");
 		}
 	}
 }
