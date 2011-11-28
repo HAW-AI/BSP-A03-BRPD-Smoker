@@ -15,11 +15,11 @@ public class Agent extends Attendee {
 		i2 = i1.getNext();
 		
 		while (true) {
-			System.out.println("Agent running");
 			if (table.isEmpty()) {
+				System.out.println("Agent placing ("+i1+","+i2+")");
 				table.place(i1,i2);
+				lazywait();
 			}
-			lazywait();
 		}
 	}
 	

@@ -6,9 +6,9 @@ public class Simulation {
 		System.out.println("Create objec…");
 		Table table = Table.newinstance();
 		table.add(new Agent(table));
-		table.add(new Smoker(Ingredients.MATCHES, table));
-		table.add(new Smoker(Ingredients.TABACCO, table));
-		table.add(new Smoker(Ingredients.PAPER, table));
+		table.add(Smoker.newinstance(Ingredients.MATCHES, table));
+		table.add(Smoker.newinstance(Ingredients.TABACCO, table));
+		table.add(Smoker.newinstance(Ingredients.PAPER, table));
 		
 		System.out.println("Start simulation…");
 		table.start();
