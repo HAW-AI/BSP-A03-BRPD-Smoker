@@ -99,22 +99,22 @@ public class Smoker extends Thread {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-		if (paper == 0) {
+		} else if (paper == 0) {
 			try {
 				table.getPaper();
 				incrementPaper();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-		if (matches == 0) {
+		} else if (matches == 0) {
 			try {
 				table.getMatches();
 				incrementMatches();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else {
+			
 		}
 	}
 }

@@ -105,7 +105,7 @@ public class Agent extends Thread {
 				break;
 			}
 			randomNum = rand.nextInt(max - min + 1) + min;
-			System.out.println("I have " + matches + "Matches left, " + paper + "Paper and " + tobacco + "Tobbaco.");
+			System.out.println("Agent: I have " + matches + "Matches left, " + paper + "Paper and " + tobacco + "Tobbaco.");
 		}
 	}
 

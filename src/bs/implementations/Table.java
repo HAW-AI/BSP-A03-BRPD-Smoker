@@ -16,17 +16,17 @@ public class Table {
 		this.matches = initialMatches;
 	}
 
-	public synchronized boolean hasPaper() throws RuntimeException {
+	public boolean hasPaper() {
 		return paper > 0;
 	}
 
 	
-	public synchronized boolean hasTobacco() throws RuntimeException {
+	public boolean hasTobacco() {
 		return tobacco > 0;
 	}
 
 	
-	public synchronized boolean hasMatches() throws RuntimeException {
+	public boolean hasMatches() {
 		return matches > 0;
 	}
 
@@ -63,23 +63,27 @@ public class Table {
 	
 	public synchronized void placePaper(int amount) throws RuntimeException {
 		System.out.println("Table: The Agent is trying to place " + amount + " Paper(s) on the table.");
-//		try {
-//			wait();
-//		} catch (Exception e) {
-//			e.printStackTrace();
+//		while (paper > 0) {
+//			try {
+//				wait();
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
 //		}
 		paper += amount;
-		System.out.println("Table: The Agent is placed " + amount + " Paper(s) on the table.");
+		System.out.println("Table: The Agent placed " + amount + " Paper(s) on the table.");
 		notify();
 	}
 
 	
 	public synchronized void placeTobacco(int amount) throws RuntimeException {
 		System.out.println("Table: The Agent is trying to place " + amount + " Tobacco on the table.");
-//		try {
-//			wait();
-//		} catch (Exception e) {
-//			e.printStackTrace();
+//		while (tobacco > 0) {
+//			try {
+//				wait();
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
 //		}
 		tobacco += amount;
 		System.out.println("Table: The Agent placed " + amount + " Tobacco on the table.");
@@ -89,18 +93,15 @@ public class Table {
 	
 	public synchronized void placeMatches(int amount) throws RuntimeException {
 		System.out.println("Table: The Agent is trying to place " + amount + " Match(es) on the table.");
-//		try {
-//			wait();
-//		} catch (Exception e) {
-//			e.printStackTrace();
+//		while (matches > 0) {
+//			try {
+//				wait();
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
 //		}
 		matches += amount;
 		System.out.println("Table: The Agent placed " + amount + " Match(es) on the table.");
 		notify();
 	}
-	
-	public synchronized void signal() {
-		notify();
-	}
-
 }
