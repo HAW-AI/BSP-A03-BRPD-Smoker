@@ -5,7 +5,7 @@ public abstract class Attendee extends Thread {
 	
 	protected void lazywait() {
 		try {
-			synchronized (this) { this.wait(); }
+			synchronized (table) { table.wait(500); }
 		} catch (InterruptedException e) {
 			System.out.println(this + " can't wait");
 		}

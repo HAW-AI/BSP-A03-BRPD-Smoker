@@ -8,6 +8,6 @@ public enum Ingredients {
 	}
 	
 	public static Ingredients getRandom() {
-		return values()[new Integer((int) (Math.random()*values().length))];
+		return values()[new Integer((int) Math.round(Math.random()*(values().length-1)))%values().length];
 	}
 }

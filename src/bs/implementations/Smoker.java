@@ -1,5 +1,7 @@
 package bs.implementations;
 
+import java.util.List;
+
 public class Smoker extends Attendee {
 	private static int count = 0;
 	private int number = 0;
@@ -16,16 +18,21 @@ public class Smoker extends Attendee {
 	}
 
 	public void run() {
+		List<Ingredients> l;
 		while (true) {
-			if (!this.table.show().contains(this.ingredient) && !this.table.isEmpty()) {
-				this.table.take();
-				System.out.println(this + " smoking");
-				lazywait();
+			// Was passiert wenn das notifyAll() for dem wait() kommt?
+			// FIXEME: mit wait(timeout), agent&smoker laufn ausm takt
+			while(this.table.isEmpty()) { lazywait(); } // Deadlock?!?
+			synchronized (this.table) {
+				if ((l = this.table.show()) != null && l.size() > 0 && !l.contains(ingredient) ) {
+					this.table.take();
+					System.out.println(this + " smoking");
+				}
 			}
 		}
 	}
 	
 	public String toString() {
-		return "Smoker " + number;
+		return String.format("Smoker %d (%s)", number, ingredient);
 	}
 }

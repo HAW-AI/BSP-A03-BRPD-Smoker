@@ -11,14 +11,16 @@ public class Agent extends Attendee {
 		Ingredients i1 = null;
 		Ingredients i2 = null;
 		
-		i1 = Ingredients.getRandom();
-		i2 = i1.getNext();
-		
 		while (true) {
+			i1 = Ingredients.getRandom();
+			i2 = i1.getNext();
+
 			if (table.isEmpty()) {
-				System.out.println("Agent placing ("+i1+","+i2+")");
-				table.place(i1,i2);
-				lazywait();
+				synchronized (this.table) {
+					System.out.println("Agent placing ("+i1+","+i2+")");
+					table.place(i1,i2);
+					table.notifyAll();
+				}
 			}
 		}
 	}
