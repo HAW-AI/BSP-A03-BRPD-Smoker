@@ -49,4 +49,13 @@ public class Table {
 		}
 		this.agent.start();
 	}
+
+	public void lazywait() {
+		try {
+			this.wait();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

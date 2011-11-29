@@ -22,11 +22,17 @@ public class Smoker extends Attendee {
 		while (true) {
 			// Was passiert wenn das notifyAll() for dem wait() kommt?
 			// FIXEME: mit wait(timeout), agent&smoker laufn ausm takt
-			while(this.table.isEmpty()) { lazywait(); } // Deadlock?!?
 			synchronized (this.table) {
+				while(this.table.isEmpty()) { this.table.lazywait(); } // Deadlock?!?
 				if ((l = this.table.show()) != null && l.size() > 0 && !l.contains(ingredient) ) {
 					this.table.take();
 					System.out.println(this + " smoking");
+//					try {
+//						this.sleep(500);
+//					} catch (InterruptedException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
 				}
 			}
 		}
